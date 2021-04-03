@@ -150,6 +150,16 @@ public class PatientRegistrationForm extends javax.swing.JFrame {
         contact.setText("Contact ");
 
         companyfield.setText("Ctrl+L or F9 to LOV");
+        companyfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                companyfieldFocusLost(evt);
+            }
+        });
+        companyfield.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                companyfieldPropertyChange(evt);
+            }
+        });
 
         fnamefield.setText("Hint: Muhammad");
 
@@ -598,6 +608,14 @@ public class PatientRegistrationForm extends javax.swing.JFrame {
     private void attachpicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachpicActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_attachpicActionPerformed
+
+    private void companyfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_companyfieldFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_companyfieldFocusLost
+
+    private void companyfieldPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_companyfieldPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_companyfieldPropertyChange
 
     /**
      * @param args the command line arguments

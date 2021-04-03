@@ -105,24 +105,20 @@ public class GetData extends javax.swing.JFrame {
 
     private void getidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getidActionPerformed
         // TODO add your handling code here:
+         
          try {
             Connection conn;
-
             String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
-            String userName = "ars";
-            String password = "arslan";
-
+            String userName = "sa";
+            String password = "arsal23";
             conn = DriverManager.getConnection(dbURL, userName, password);
-
-
-
-            String query = "select * from tbl_CITIES";
+            String query = "select * from CITIES";
             Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-               String value = rs.getString("City_Id");
+               String value = rs.getString("city_id");
                city_id_Combobox.addItem(value);
 
             }
@@ -138,23 +134,18 @@ public class GetData extends javax.swing.JFrame {
         
         try {
             Connection conn;
-
             String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
-            String userName = "ars";
-            String password = "arslan";
-
+            String userName = "sa";
+            String password = "arsal23";
             conn = DriverManager.getConnection(dbURL, userName, password);
-
-
-
-            String query = "select * from tbl_CITIES";
+            String query = "select * from CITIES";
             Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
             while (rs.next()) {
-               String value = rs.getString("City_Name");
-               cityName_Combobox.addItem(value);
+               String value1 = rs.getString("city_name");
+               cityName_Combobox.addItem(value1);  //add city names to the list
 
             }
         } catch (SQLException e) {
