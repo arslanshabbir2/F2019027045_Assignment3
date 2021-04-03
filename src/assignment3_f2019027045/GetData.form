@@ -31,8 +31,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jComboBox1" min="-2" pref="138" max="-2" attributes="0"/>
-                  <Component id="jComboBox2" min="-2" pref="138" max="-2" attributes="0"/>
+                  <Component id="city_id_Combobox" min="-2" pref="138" max="-2" attributes="0"/>
+                  <Component id="cityName_Combobox" min="-2" pref="138" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -48,13 +48,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="city_id_Combobox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="getid" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="city_id" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cityName_Combobox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="getname" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="city_name" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -80,7 +80,7 @@
         <Property name="text" type="java.lang.String" value="City_Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="city_id_Combobox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -90,7 +90,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox2">
+    <Component class="javax.swing.JComboBox" name="cityName_Combobox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -124,6 +124,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Get Name"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getnameActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

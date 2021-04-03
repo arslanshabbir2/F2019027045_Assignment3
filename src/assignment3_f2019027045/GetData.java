@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package assignment3_f2019027045;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -29,8 +34,8 @@ public class GetData extends javax.swing.JFrame {
 
         city_id = new javax.swing.JLabel();
         city_name = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        city_id_Combobox = new javax.swing.JComboBox<>();
+        cityName_Combobox = new javax.swing.JComboBox<>();
         getid = new javax.swing.JButton();
         getname = new javax.swing.JButton();
 
@@ -54,6 +59,11 @@ public class GetData extends javax.swing.JFrame {
         getname.setBackground(new java.awt.Color(0, 204, 255));
         getname.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         getname.setText("Get Name");
+        getname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getnameActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,8 +76,8 @@ public class GetData extends javax.swing.JFrame {
                     .addComponent(city_id))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(city_id_Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cityName_Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(getname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -79,12 +89,12 @@ public class GetData extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(city_id_Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(getid)
                     .addComponent(city_id))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cityName_Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(getname)
                     .addComponent(city_name))
                 .addContainerGap(151, Short.MAX_VALUE))
@@ -95,7 +105,65 @@ public class GetData extends javax.swing.JFrame {
 
     private void getidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getidActionPerformed
         // TODO add your handling code here:
+         try {
+            Connection conn;
+
+            String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
+            String userName = "ars";
+            String password = "arslan";
+
+            conn = DriverManager.getConnection(dbURL, userName, password);
+
+
+
+            String query = "select * from tbl_CITIES";
+            Statement stmt;
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+               String value = rs.getString("City_Id");
+               city_id_Combobox.addItem(value);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+             
+        }
+        
     }//GEN-LAST:event_getidActionPerformed
+
+    private void getnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getnameActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            Connection conn;
+
+            String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
+            String userName = "ars";
+            String password = "arslan";
+
+            conn = DriverManager.getConnection(dbURL, userName, password);
+
+
+
+            String query = "select * from tbl_CITIES";
+            Statement stmt;
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+               String value = rs.getString("City_Name");
+               cityName_Combobox.addItem(value);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+             
+        }
+        
+        
+    }//GEN-LAST:event_getnameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,11 +201,11 @@ public class GetData extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cityName_Combobox;
     private javax.swing.JLabel city_id;
+    private javax.swing.JComboBox<String> city_id_Combobox;
     private javax.swing.JLabel city_name;
     private javax.swing.JButton getid;
     private javax.swing.JButton getname;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     // End of variables declaration//GEN-END:variables
 }
