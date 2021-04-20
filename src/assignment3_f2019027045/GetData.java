@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package assignment3_f2019027045;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -108,11 +103,11 @@ public class GetData extends javax.swing.JFrame {
          
          try {
             Connection conn;
-            String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
-            String userName = "sa";
-            String password = "arsal23";
+            String dbURL = "jdbc:postgresql://127.0.0.1:5432/new_db";
+            String userName = "postgres";
+            String password = "arslan123";
             conn = DriverManager.getConnection(dbURL, userName, password);
-            String query = "select * from CITIES";
+            String query = "select * from arslan.\"Cities\" ";
             Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -122,7 +117,12 @@ public class GetData extends javax.swing.JFrame {
                city_id_Combobox.addItem(value);
 
             }
-        } catch (SQLException e) {
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } 
+           catch (SQLException e) {
             e.printStackTrace();
              
         }
@@ -134,11 +134,11 @@ public class GetData extends javax.swing.JFrame {
         
         try {
             Connection conn;
-            String dbURL = "jdbc:sqlserver://localhost;ServerName=DESKTOP-PJUCQ7K\\SQLEXPRESS;database=Arslan";
-            String userName = "sa";
-            String password = "arsal23";
+            String dbURL = "jdbc:postgresql://127.0.0.1:5432/new_db";
+            String userName = "postgres";
+            String password = "arslan123";
             conn = DriverManager.getConnection(dbURL, userName, password);
-            String query = "select * from CITIES";
+            String query = "select * from arslan.\"Cities\" ";
             Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
@@ -148,6 +148,9 @@ public class GetData extends javax.swing.JFrame {
                cityName_Combobox.addItem(value1);  //add city names to the list
 
             }
+            rs.close();
+            stmt.close();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
              
